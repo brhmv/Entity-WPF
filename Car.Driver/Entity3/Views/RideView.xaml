@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Entity3.Views.RideView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Entity3.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Canvas>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="291" Canvas.Left="289" Canvas.Top="10">
+            <Button Command="{Binding Add_Button}"    Width="100" Height="50" Content="Add" BorderThickness="0" FontSize="26" FontWeight="Bold" Background="DodgerBlue" />
+            <Button Command="{Binding Delete_Button}" Width="100" Height="50" Content="Delete" BorderThickness="0" FontSize="26" FontWeight="Bold" Background="DodgerBlue" Margin="10,0,0,0" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Canvas.Left="63" Canvas.Top="73" Orientation="Horizontal" Background="Gray" HorizontalAlignment="Center" VerticalAlignment="Top" Width="674">
+            <Label Margin="10,0,0,0" FontWeight="DemiBold" FontSize="25" Width="115" Height="50" Content="Ride" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label FontWeight="DemiBold" FontSize="25" Width="122" Height="50" Content="Pages" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label FontWeight="DemiBold" FontSize="25" Width="131" Height="50" Content="YearPress" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label FontWeight="DemiBold" FontSize="25" Width="125" Height="50" Content="Author" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label FontWeight="DemiBold" FontSize="25" Width="136" Height="50" Content="Category" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        </StackPanel>
+
+        <ListBox Grid.Row="2" Height="300" Canvas.Top="124" Background="NavajoWhite" ScrollViewer.CanContentScroll="True" VerticalAlignment="Top" ItemsSource="{Binding CarListboxSource}" Canvas.Left="63" HorizontalAlignment="Center" Width="674">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="135"/>
+                            <ColumnDefinition Width="130"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding Name}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Pages}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="{Binding YearPress}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="3" Text="{Binding IdAuthorNavigation}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="4" Text="{Binding IdCategoryNavigation}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Canvas>
+
+    <UserControl.DataContext>
+        <local:RideViewModel/>
+    </UserControl.DataContext>
+</UserControl>
